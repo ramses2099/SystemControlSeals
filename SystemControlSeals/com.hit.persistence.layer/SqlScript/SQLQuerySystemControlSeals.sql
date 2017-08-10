@@ -67,7 +67,26 @@ GO
 INSERT INTO [dbo].[User] SELECT 'jose.encarnacion','abcd.1234','Jose Emmanuel','Encarnacion Santana','jose.encarnacion@hit.com.do',1,1,GETDATE(),'172.17.30.20';
 INSERT INTO [dbo].[User] SELECT 'carlos.marte','abcd.1234','Carlos I','Marte','carlos.marte@hit.com.do',1,1,GETDATE(),'172.17.30.20';
 
-
 SELECT * FROM [dbo].[User];
 
+
+IF OBJECT_ID('[dbo].[Persmission]', 'U') IS NOT NULL
+  DROP TABLE [dbo].[Persmission]
+GO
+
+CREATE TABLE [dbo].[Persmission]
+(
+	IdPersmission int not null identity(1,1), 
+	IdRol int not null,
+	Modulo varchar(800),
+	Permitted bit,
+	IdEstadoRow int not null,
+	FechaCreacion datetime,
+	HostName varchar(200), 
+    CONSTRAINT PK_IdPersmission_Persmission PRIMARY KEY (IdPersmission)
+)
+GO
+
 --*/
+
+SELECT * FROM [dbo].[Persmission];
