@@ -1035,3 +1035,149 @@ SELECT * FROM [dbo].[SealsGiveLineDetails]
 
 --*/
 
+
+
+/*---
+
+CREATE PROCEDURE dbo.GetDataJSON
+	-- Add the parameters for the stored procedure here
+	 @table_name varchar(50),
+	 @registries_per_request smallint,
+     @column_position VARCHAR(150)
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+
+
+DECLARE @sql_column VARCHAR(150);
+DECLARE @sql_where_column VARCHAR(150);
+
+SET @sql_where_column =' AND ordinal_position IN(' + @column_position + ');';
+
+
+IF OBJECT_ID('tempdb.dbo.#Temp', 'U') IS NOT NULL
+BEGIN
+ DROP TABLE #Temp;
+END
+
+CREATE TABLE #Temp(
+column_name VARCHAR(150)
+)
+
+SET @sql_column = 'INSERT INTO #Temp SELECT column_name FROM INFORMATION_SCHEMA.COLUMNS 
+WHERE table_name = ''' + @table_name + '''' + @sql_where_column;
+
+
+EXEC sp_sqlexec @sql_column;
+
+IF((SELECT COUNT(*) FROM INFORMATION_SCHEMA.TABLES WHERE table_name = @table_name) > 0)
+	BEGIN
+		DECLARE	@json VARCHAR(MAX),
+				@line VARCHAR(MAX),
+				@columns VARCHAR(MAX),
+				@sql NVARCHAR(MAX),
+				@columnNavigator VARCHAR(50),
+				@counter TINYINT,
+				@size VARCHAR(10)
+	
+		
+		IF (@registries_per_request IS NULL) 
+		BEGIN
+			set @size = ''
+		END
+		ELSE 
+		BEGIN
+			SET @size = ' TOP ' + CONVERT(VARCHAR, @registries_per_request)
+		END
+		SET	@columns = '{'
+			
+		-- Declaracion de cursor
+		DECLARE schemaCursor CURSOR FAST_FORWARD
+		FOR SELECT column_name FROM #Temp;
+
+		-- Abrir cursor
+		OPEN schemaCursor
+
+		FETCH NEXT FROM schemaCursor INTO
+		@columnNavigator
+
+		SELECT	@counter = count(*) FROM INFORMATION_SCHEMA.COLUMNS 
+		WHERE table_name = @table_name
+
+		WHILE (@@FETCH_STATUS =0)
+		BEGIN
+		  
+			SET @columns = @columns + '''''' + @columnNavigator + ''''':'''''' + CONVERT(VARCHAR, ISNULL(' + @columnNavigator + ','''')) + '''''''
+			SET @counter = @counter - 1
+			IF(0 != @counter) 
+			BEGIN
+				SET @columns = @columns + ','
+			END
+
+			FETCH NEXT FROM schemaCursor
+			INTO  @columnNavigator
+		END	
+
+		SET	@columns =  SUBSTRING(@columns,0,LEN(@columns)) + '}'
+
+		CLOSE		schemaCursor
+		DEALLOCATE	schemaCursor
+		
+		SET	@json = '['
+
+		SET @sql = 'INSERT INTO #Temp2 SELECT  ' + @size + ' ''' + @columns + ''' AS JSON  FROM ' + @table_name
+	
+		IF OBJECT_ID('tempdb.dbo.#Temp2', 'U') IS NOT NULL
+		BEGIN
+		 DROP TABLE #Temp2;
+		END
+
+		CREATE TABLE #Temp2(
+		column_name VARCHAR(MAX)
+		)
+		
+		EXEC sp_sqlexec @sql
+
+		SELECT	@counter = count(*) FROM #Temp2;
+
+		DECLARE tmpCur CURSOR FAST_FORWARD
+		FOR SELECT * FROM #Temp2;
+
+		OPEN tmpCur
+
+		FETCH NEXT FROM tmpCur INTO
+		@line
+
+		WHILE (@@FETCH_STATUS =0)
+		BEGIN
+		  
+			SET	@counter = @counter - 1
+			SET @json = @json + @line
+			IF ( 0 != @counter ) 
+			BEGIN
+				SET @json = @json + ','
+			END
+			
+			FETCH NEXT FROM tmpCur INTO
+			@line
+		END	
+
+		SET	@json = @json + ']'
+
+		CLOSE		tmpCur
+		DEALLOCATE	tmpCur
+		
+		SELECT @json as JSON
+		
+
+END
+end
+
+--*/
+
+
+SELECT * FROM [dbo].[VesselVisits]
