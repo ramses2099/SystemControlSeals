@@ -1177,7 +1177,89 @@ IF((SELECT COUNT(*) FROM INFORMATION_SCHEMA.TABLES WHERE table_name = @table_nam
 END
 end
 
+IF OBJECT_ID('[dbo].[SealsReturnHit]', 'U') IS NOT NULL
+  DROP TABLE [dbo].[SealsReturnHit]
+GO
+
+CREATE TABLE [dbo].[SealsReturnHit]
+(
+	IdSealsReturnHit int not null identity(1,1),
+	QtyReturn int not null,
+	EmployeeCode varchar(30) not null,
+    IdVesselVisits int not null,
+    IdSealsProcess int not null,
+	SerialNoDesde int null,
+    SerialNoHasta int null,
+	Nota VARCHAR(800) not null,
+	IdStateRow int not null,
+	FechaCreacion datetime,
+	HostName varchar(200), 
+    CONSTRAINT PK_IdSealsReturnHit_SealsReturnHit PRIMARY KEY (IdSealsReturnHit)
+)
+
+
+
+IF OBJECT_ID('[dbo].[SealsReturnHitDetails]', 'U') IS NOT NULL
+  DROP TABLE [dbo].[SealsReturnHitDetails]
+GO
+
+CREATE TABLE [dbo].[SealsReturnHitDetails]
+(
+	IdSealsReturnHitDetails int not null identity(1,1),
+	IdSealsReturnHit int not null,
+	SealsSequence int not null,
+    IdSealsState int not null,
+	IdStateRow int not null,
+	FechaCreacion datetime,
+	HostName varchar(200), 
+    CONSTRAINT PK_IdSealsReturnHitDetails_SealsReturnHitDetails PRIMARY KEY (IdSealsReturnHitDetails)
+)
+
+
+IF OBJECT_ID('[dbo].[SealsReturnLine]', 'U') IS NOT NULL
+  DROP TABLE [dbo].[SealsReturnLine]
+GO
+
+CREATE TABLE [dbo].[SealsReturnLine]
+(
+	IdSealsReturnLine int not null identity(1,1),
+	QtyReturn int not null,
+	EmployeeCode varchar(30) not null,
+    IdVesselVisits int not null,
+    IdSealsProcess int not null,
+	Nota VARCHAR(800) not null,
+	IdStateRow int not null,
+	FechaCreacion datetime,
+	HostName varchar(200), 
+    CONSTRAINT PK_IdSealsReturnLine_SealsReturnLine PRIMARY KEY (IdSealsReturnLine)
+)
+
+
+
+IF OBJECT_ID('[dbo].[SealsReturnLineDetails]', 'U') IS NOT NULL
+  DROP TABLE [dbo].[SealsReturnLineDetails]
+GO
+
+CREATE TABLE [dbo].[SealsReturnLineDetails]
+(
+	IdSealsReturnLineDetails int not null identity(1,1),
+	IdSealsReturnLine int not null,
+	SealsSequence varchar(40) not null,
+    IdSealsState int not null,
+	IdStateRow int not null,
+	FechaCreacion datetime,
+	HostName varchar(200), 
+    CONSTRAINT PK_IdSealsReturnLineDetails_SealsReturnLineDetails PRIMARY KEY (IdSealsReturnLineDetails)
+)
+
 --*/
 
 
 SELECT * FROM [dbo].[VesselVisits]
+SELECT * FROM [dbo].[SealsGiveHit]
+SELECT * FROM [dbo].[SealsGiveHitDetails]
+
+
+SELECT * FROM [dbo].[SealsReturnHit]
+SELECT * FROM [dbo].[SealsReturnHitDetails]
+
