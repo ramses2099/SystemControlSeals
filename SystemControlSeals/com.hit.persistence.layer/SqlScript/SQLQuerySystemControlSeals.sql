@@ -3356,4 +3356,426 @@ UPDATE [dbo].[SealsReturnHitDetails]
  	  	 
 END
 
+
+
+-- =============================================
+-- Create basic stored procedure template
+-- =============================================
+
+-- Drop stored procedure if it already exists
+IF EXISTS (
+  SELECT * 
+    FROM INFORMATION_SCHEMA.ROUTINES 
+   WHERE SPECIFIC_SCHEMA = N'dbo'
+     AND SPECIFIC_NAME = N'udfSealsReturnLine_Select' 
+)
+   DROP PROCEDURE dbo.udfSealsReturnLine_Select
+GO
+
+CREATE PROCEDURE dbo.udfSealsReturnLine_Select
+	@IdSealsReturnLine int
+AS
+BEGIN
+
+SELECT [IdSealsReturnLine]
+      ,[QtyReturn]
+      ,[EmployeeCode]
+      ,[IdVesselVisits]
+      ,[IdSealsProcess]
+      ,[Nota]
+      ,[IdStateRow]
+      ,[FechaCreacion]
+      ,[HostName]
+  FROM [dbo].[SealsReturnLine]
+ 	WHERE ([IdSealsReturnLine] = @IdSealsReturnLine OR 0=@IdSealsReturnLine) AND [IdStateRow] = 1
+
+END
+
+EXEC dbo.udfSealsReturnLine_Select @IdSealsReturnLine = 0
+
+
+-- =============================================
+-- Create basic stored procedure template
+-- =============================================
+
+-- Drop stored procedure if it already exists
+IF EXISTS (
+  SELECT * 
+    FROM INFORMATION_SCHEMA.ROUTINES 
+   WHERE SPECIFIC_SCHEMA = N'dbo'
+     AND SPECIFIC_NAME = N'udfSealsReturnLine_Insert' 
+)
+   DROP PROCEDURE dbo.udfSealsReturnLine_Insert
+GO
+
+CREATE PROCEDURE dbo.udfSealsReturnLine_Insert
+	        @QtyReturn int
+           ,@EmployeeCode varchar(30)
+           ,@IdVesselVisits int
+           ,@IdSealsProcess int
+           ,@Nota varchar(800)
+           ,@IdStateRow int
+           ,@HostName varchar(200)
+AS
+BEGIN
+
+INSERT INTO [dbo].[SealsReturnLine]
+           ([QtyReturn]
+           ,[EmployeeCode]
+           ,[IdVesselVisits]
+           ,[IdSealsProcess]
+           ,[Nota]
+           ,[IdStateRow]
+           ,[FechaCreacion]
+           ,[HostName])
+     VALUES
+           (@QtyReturn
+           ,@EmployeeCode
+           ,@IdVesselVisits
+           ,@IdSealsProcess
+           ,@Nota
+           ,@IdStateRow
+           ,GETDATE()
+           ,@HostName)
+		    
+END
+
+
+-- =============================================
+-- Create basic stored procedure template
+-- =============================================
+
+-- Drop stored procedure if it already exists
+IF EXISTS (
+  SELECT * 
+    FROM INFORMATION_SCHEMA.ROUTINES 
+   WHERE SPECIFIC_SCHEMA = N'dbo'
+     AND SPECIFIC_NAME = N'udfSealsReturnLine_Update' 
+)
+   DROP PROCEDURE dbo.udfSealsReturnLine_Update
+GO
+
+CREATE PROCEDURE dbo.udfSealsReturnLine_Update
+       @IdSealsReturnLine int
+	  ,@QtyReturn int
+      ,@EmployeeCode varchar(30)
+      ,@IdVesselVisits int
+      ,@IdSealsProcess int
+      ,@Nota varchar(800)
+	  ,@IdStateRow int
+      ,@HostName varchar(200)
+AS
+BEGIN
+
+UPDATE [dbo].[SealsReturnLine]
+   SET [QtyReturn] = @QtyReturn
+      ,[EmployeeCode] = @EmployeeCode
+      ,[IdVesselVisits] = @IdVesselVisits
+      ,[IdSealsProcess] = @IdSealsProcess
+      ,[Nota] = @Nota
+      ,[IdStateRow] = @IdStateRow
+      ,[HostName] = @HostName
+ WHERE [IdSealsReturnLine] = @IdSealsReturnLine
+
+ 	  	 
+END
+
+
+-- =============================================
+-- Create basic stored procedure template
+-- =============================================
+
+-- Drop stored procedure if it already exists
+IF EXISTS (
+  SELECT * 
+    FROM INFORMATION_SCHEMA.ROUTINES 
+   WHERE SPECIFIC_SCHEMA = N'dbo'
+     AND SPECIFIC_NAME = N'udfSealsReturnLine_Delete' 
+)
+   DROP PROCEDURE dbo.udfSealsReturnLine_Delete
+
+GO
+
+CREATE PROCEDURE dbo.udfSealsReturnLine_Delete
+       @IdSealsReturnLine int
+	  ,@HostName varchar(200)
+AS
+BEGIN
+
+UPDATE [dbo].[SealsReturnLine]
+   SET
+       [IdStateRow] = 2
+      ,[HostName] = @HostName
+ WHERE [IdSealsReturnLine] = @IdSealsReturnLine
+
+ 	  	 
+END
+
+
+-- =============================================
+-- Create basic stored procedure template
+-- =============================================
+
+-- Drop stored procedure if it already exists
+IF EXISTS (
+  SELECT * 
+    FROM INFORMATION_SCHEMA.ROUTINES 
+   WHERE SPECIFIC_SCHEMA = N'dbo'
+     AND SPECIFIC_NAME = N'udfSealsReturnLineDetails_Select' 
+)
+   DROP PROCEDURE dbo.udfSealsReturnLineDetails_Select
+GO
+
+CREATE PROCEDURE dbo.udfSealsReturnLineDetails_Select
+	@IdSealsReturnLineDetails int
+AS
+BEGIN
+
+SELECT [IdSealsReturnLineDetails]
+      ,[IdSealsReturnLine]
+      ,[SealsSequence]
+      ,[IdSealsState]
+      ,[IdStateRow]
+      ,[FechaCreacion]
+      ,[HostName]
+  FROM [dbo].[SealsReturnLineDetails]
+ 	WHERE ([IdSealsReturnLineDetails] = @IdSealsReturnLineDetails OR 0=@IdSealsReturnLineDetails) AND [IdStateRow] = 1
+
+END
+
+EXEC dbo.udfSealsReturnLineDetails_Select @IdSealsReturnLineDetails = 0
+
+
+-- =============================================
+-- Create basic stored procedure template
+-- =============================================
+
+-- Drop stored procedure if it already exists
+IF EXISTS (
+  SELECT * 
+    FROM INFORMATION_SCHEMA.ROUTINES 
+   WHERE SPECIFIC_SCHEMA = N'dbo'
+     AND SPECIFIC_NAME = N'udfSealsReturnLineDetails_Insert' 
+)
+   DROP PROCEDURE dbo.udfSealsReturnLineDetails_Insert
+GO
+
+CREATE PROCEDURE dbo.udfSealsReturnLineDetails_Insert
+	       @IdSealsReturnLine int
+          ,@SealsSequence varchar(40)
+          ,@IdSealsState int
+          ,@IdStateRow int
+          ,@HostName varchar(200)
+AS
+BEGIN
+
+INSERT INTO [dbo].[SealsReturnLineDetails]
+           ([IdSealsReturnLine]
+           ,[SealsSequence]
+           ,[IdSealsState]
+           ,[IdStateRow]
+           ,[FechaCreacion]
+           ,[HostName])
+     VALUES
+           (@IdSealsReturnLine 
+           ,@SealsSequence
+           ,@IdSealsState
+           ,@IdStateRow
+           ,GETDATE()
+           ,@HostName)
+		    
+END
+
+
+-- =============================================
+-- Create basic stored procedure template
+-- =============================================
+
+-- Drop stored procedure if it already exists
+IF EXISTS (
+  SELECT * 
+    FROM INFORMATION_SCHEMA.ROUTINES 
+   WHERE SPECIFIC_SCHEMA = N'dbo'
+     AND SPECIFIC_NAME = N'udfSealsReturnLineDetails_Update' 
+)
+   DROP PROCEDURE dbo.udfSealsReturnLineDetails_Update
+GO
+
+CREATE PROCEDURE dbo.udfSealsReturnLineDetails_Update
+       @IdSealsReturnLineDetails int
+      ,@IdSealsReturnLine int
+      ,@SealsSequence varchar(40)
+      ,@IdSealsState int
+      ,@IdStateRow int
+      ,@HostName varchar(200)
+AS
+BEGIN
+
+UPDATE [dbo].[SealsReturnLineDetails]
+   SET [IdSealsReturnLine] = @IdSealsReturnLine
+      ,[SealsSequence] = @SealsSequence
+      ,[IdSealsState] = @IdSealsState
+      ,[IdStateRow] = @IdStateRow
+      ,[HostName] = @HostName
+ WHERE [IdSealsReturnLineDetails] = @IdSealsReturnLineDetails
+	  	 
+END
+
+
+-- =============================================
+-- Create basic stored procedure template
+-- =============================================
+
+-- Drop stored procedure if it already exists
+IF EXISTS (
+  SELECT * 
+    FROM INFORMATION_SCHEMA.ROUTINES 
+   WHERE SPECIFIC_SCHEMA = N'dbo'
+     AND SPECIFIC_NAME = N'udfSealsReturnLineDetails_Delete' 
+)
+   DROP PROCEDURE dbo.udfSealsReturnLineDetails_Delete
+
+GO
+
+CREATE PROCEDURE dbo.udfSealsReturnLineDetails_Delete
+       @IdSealsReturnLineDetails int
+      ,@HostName varchar(200)
+AS
+BEGIN
+
+UPDATE [dbo].[SealsReturnLineDetails]
+   SET 
+       [IdStateRow] = 2
+      ,[HostName] = @HostName
+ WHERE [IdSealsReturnLineDetails] = @IdSealsReturnLineDetails
+	  	 
+END
+
 --*/
+
+-- =============================================
+-- Create basic stored procedure template
+-- =============================================
+
+-- Drop stored procedure if it already exists
+IF EXISTS (
+  SELECT * 
+    FROM INFORMATION_SCHEMA.ROUTINES 
+   WHERE SPECIFIC_SCHEMA = N'dbo'
+     AND SPECIFIC_NAME = N'udfSealsState_Select' 
+)
+   DROP PROCEDURE dbo.udfSealsState_Select
+GO
+
+CREATE PROCEDURE dbo.udfSealsState_Select
+	@IdSealsState int
+AS
+BEGIN
+
+SELECT [IdSealsState]
+      ,[Descripcion]
+      ,[IdStateRow]
+      ,[FechaCreacion]
+      ,[HostName]
+  FROM [dbo].[SealsState]
+ 	WHERE ([IdSealsState] = @IdSealsState OR 0=@IdSealsState) AND [IdStateRow] = 1
+
+END
+
+EXEC dbo.udfSealsState_Select @IdSealsState = 0
+
+
+-- =============================================
+-- Create basic stored procedure template
+-- =============================================
+
+-- Drop stored procedure if it already exists
+IF EXISTS (
+  SELECT * 
+    FROM INFORMATION_SCHEMA.ROUTINES 
+   WHERE SPECIFIC_SCHEMA = N'dbo'
+     AND SPECIFIC_NAME = N'udfSealsState_Insert' 
+)
+   DROP PROCEDURE dbo.udfSealsState_Insert
+GO
+
+CREATE PROCEDURE dbo.udfSealsState_Insert
+	       @Descripcion varchar(500)
+          ,@IdStateRow int
+          ,@HostName varchar(200)
+AS
+BEGIN
+
+INSERT INTO [dbo].[SealsState]
+           ([Descripcion]
+           ,[IdStateRow]
+           ,[FechaCreacion]
+           ,[HostName])
+     VALUES
+           (@Descripcion
+           ,@IdStateRow
+           ,GETDATE()
+           ,@HostName)
+		    
+END
+
+
+-- =============================================
+-- Create basic stored procedure template
+-- =============================================
+
+-- Drop stored procedure if it already exists
+IF EXISTS (
+  SELECT * 
+    FROM INFORMATION_SCHEMA.ROUTINES 
+   WHERE SPECIFIC_SCHEMA = N'dbo'
+     AND SPECIFIC_NAME = N'udfSealsState_Update' 
+)
+   DROP PROCEDURE dbo.udfSealsState_Update
+GO
+
+CREATE PROCEDURE dbo.udfSealsState_Update
+       @IdSealsState int
+	  ,@Descripcion varchar(500)
+      ,@IdStateRow int
+      ,@HostName varchar(200)
+AS
+BEGIN
+
+UPDATE [dbo].[SealsState]
+   SET [Descripcion] = @Descripcion
+      ,[IdStateRow] = @IdStateRow
+      ,[HostName] = @HostName
+ WHERE [IdSealsState] = @IdSealsState
+	  	 
+END
+
+
+-- =============================================
+-- Create basic stored procedure template
+-- =============================================
+
+-- Drop stored procedure if it already exists
+IF EXISTS (
+  SELECT * 
+    FROM INFORMATION_SCHEMA.ROUTINES 
+   WHERE SPECIFIC_SCHEMA = N'dbo'
+     AND SPECIFIC_NAME = N'udfSealsReturnLineDetails_Delete' 
+)
+   DROP PROCEDURE dbo.udfSealsReturnLineDetails_Delete
+
+GO
+
+CREATE PROCEDURE dbo.udfSealsReturnLineDetails_Delete
+       @IdSealsReturnLineDetails int
+      ,@HostName varchar(200)
+AS
+BEGIN
+
+UPDATE [dbo].[SealsReturnLineDetails]
+   SET 
+       [IdStateRow] = 2
+      ,[HostName] = @HostName
+ WHERE [IdSealsReturnLineDetails] = @IdSealsReturnLineDetails
+	  	 
+END
