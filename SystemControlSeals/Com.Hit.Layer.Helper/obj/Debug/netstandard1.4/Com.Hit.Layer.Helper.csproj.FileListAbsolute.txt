@@ -1,7 +1,0 @@
-C:\Users\jose.encarnacion\Source\Repos\SystemControlSeals\SystemControlSeals\Com.Hit.Layer.Helper\bin\Debug\netstandard1.4\Com.Hit.Layer.Helper.deps.json
-C:\Users\jose.encarnacion\Source\Repos\SystemControlSeals\SystemControlSeals\Com.Hit.Layer.Helper\bin\Debug\netstandard1.4\Com.Hit.Layer.Helper.dll
-C:\Users\jose.encarnacion\Source\Repos\SystemControlSeals\SystemControlSeals\Com.Hit.Layer.Helper\bin\Debug\netstandard1.4\Com.Hit.Layer.Helper.pdb
-C:\Users\jose.encarnacion\Source\Repos\SystemControlSeals\SystemControlSeals\Com.Hit.Layer.Helper\obj\Debug\netstandard1.4\Com.Hit.Layer.Helper.csprojResolveAssemblyReference.cache
-C:\Users\jose.encarnacion\Source\Repos\SystemControlSeals\SystemControlSeals\Com.Hit.Layer.Helper\obj\Debug\netstandard1.4\Com.Hit.Layer.Helper.AssemblyInfo.cs
-C:\Users\jose.encarnacion\Source\Repos\SystemControlSeals\SystemControlSeals\Com.Hit.Layer.Helper\obj\Debug\netstandard1.4\Com.Hit.Layer.Helper.dll
-C:\Users\jose.encarnacion\Source\Repos\SystemControlSeals\SystemControlSeals\Com.Hit.Layer.Helper\obj\Debug\netstandard1.4\Com.Hit.Layer.Helper.pdb

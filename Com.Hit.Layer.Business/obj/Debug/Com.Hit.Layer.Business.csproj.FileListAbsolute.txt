@@ -1,0 +1,5 @@
+c:\users\jose.encarnacion\documents\visual studio 2015\Projects\SystemControlSeals\Com.Hit.Layer.Business\bin\Debug\Com.Hit.Layer.Business.dll
+c:\users\jose.encarnacion\documents\visual studio 2015\Projects\SystemControlSeals\Com.Hit.Layer.Business\bin\Debug\Com.Hit.Layer.Business.pdb
+c:\users\jose.encarnacion\documents\visual studio 2015\Projects\SystemControlSeals\Com.Hit.Layer.Business\obj\Debug\Com.Hit.Layer.Business.csprojResolveAssemblyReference.cache
+c:\users\jose.encarnacion\documents\visual studio 2015\Projects\SystemControlSeals\Com.Hit.Layer.Business\obj\Debug\Com.Hit.Layer.Business.dll
+c:\users\jose.encarnacion\documents\visual studio 2015\Projects\SystemControlSeals\Com.Hit.Layer.Business\obj\Debug\Com.Hit.Layer.Business.pdb

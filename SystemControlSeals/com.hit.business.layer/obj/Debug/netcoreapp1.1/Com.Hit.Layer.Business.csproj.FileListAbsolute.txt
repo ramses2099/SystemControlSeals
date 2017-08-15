@@ -1,7 +1,0 @@
-C:\Users\jose.encarnacion\Source\Repos\SystemControlSeals\SystemControlSeals\com.hit.business.layer\bin\Debug\netcoreapp1.1\Com.Hit.Layer.Business.deps.json
-C:\Users\jose.encarnacion\Source\Repos\SystemControlSeals\SystemControlSeals\com.hit.business.layer\bin\Debug\netcoreapp1.1\Com.Hit.Layer.Business.dll
-C:\Users\jose.encarnacion\Source\Repos\SystemControlSeals\SystemControlSeals\com.hit.business.layer\bin\Debug\netcoreapp1.1\Com.Hit.Layer.Business.pdb
-C:\Users\jose.encarnacion\Source\Repos\SystemControlSeals\SystemControlSeals\com.hit.business.layer\obj\Debug\netcoreapp1.1\Com.Hit.Layer.Business.csprojResolveAssemblyReference.cache
-C:\Users\jose.encarnacion\Source\Repos\SystemControlSeals\SystemControlSeals\com.hit.business.layer\obj\Debug\netcoreapp1.1\Com.Hit.Layer.Business.AssemblyInfo.cs
-C:\Users\jose.encarnacion\Source\Repos\SystemControlSeals\SystemControlSeals\com.hit.business.layer\obj\Debug\netcoreapp1.1\Com.Hit.Layer.Business.dll
-C:\Users\jose.encarnacion\Source\Repos\SystemControlSeals\SystemControlSeals\com.hit.business.layer\obj\Debug\netcoreapp1.1\Com.Hit.Layer.Business.pdb

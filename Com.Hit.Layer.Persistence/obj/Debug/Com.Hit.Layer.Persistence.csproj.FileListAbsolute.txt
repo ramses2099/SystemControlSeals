@@ -1,0 +1,5 @@
+c:\users\jose.encarnacion\documents\visual studio 2015\Projects\SystemControlSeals\Com.Hit.Layer.Persistence\bin\Debug\Com.Hit.Layer.Persistence.dll
+c:\users\jose.encarnacion\documents\visual studio 2015\Projects\SystemControlSeals\Com.Hit.Layer.Persistence\bin\Debug\Com.Hit.Layer.Persistence.pdb
+c:\users\jose.encarnacion\documents\visual studio 2015\Projects\SystemControlSeals\Com.Hit.Layer.Persistence\obj\Debug\Com.Hit.Layer.Persistence.csprojResolveAssemblyReference.cache
+c:\users\jose.encarnacion\documents\visual studio 2015\Projects\SystemControlSeals\Com.Hit.Layer.Persistence\obj\Debug\Com.Hit.Layer.Persistence.dll
+c:\users\jose.encarnacion\documents\visual studio 2015\Projects\SystemControlSeals\Com.Hit.Layer.Persistence\obj\Debug\Com.Hit.Layer.Persistence.pdb
