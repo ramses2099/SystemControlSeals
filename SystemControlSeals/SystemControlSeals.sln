@@ -1,17 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26430.16
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Com.Hit.Layer.Business", "com.hit.business.layer\Com.Hit.Layer.Business.csproj", "{71AE8E5C-0D68-42C3-A4A3-BB96EB1B01D4}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Com.Hit.Layer.Model", "com.hit.model.layer\Com.Hit.Layer.Model.csproj", "{08717A4D-97BD-4956-A1B2-236DDB748909}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiSystemControlSeals", "WebApiSystemControlSeals\WebApiSystemControlSeals.csproj", "{203A4369-1F89-4A18-B3CC-23FB689314F6}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Com.Hit.Layer.Helper", "Com.Hit.Layer.Helper\Com.Hit.Layer.Helper.csproj", "{185C5782-3230-4A40-A463-E2FA58E4F54D}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Com.Hit.Persistence.Layer", "Com.Hit.Persistence.Layer\Com.Hit.Persistence.Layer.csproj", "{6CB9E486-0454-4AAD-9A5C-15BD35C35400}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,26 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{71AE8E5C-0D68-42C3-A4A3-BB96EB1B01D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{71AE8E5C-0D68-42C3-A4A3-BB96EB1B01D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{71AE8E5C-0D68-42C3-A4A3-BB96EB1B01D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{71AE8E5C-0D68-42C3-A4A3-BB96EB1B01D4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{08717A4D-97BD-4956-A1B2-236DDB748909}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{08717A4D-97BD-4956-A1B2-236DDB748909}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{08717A4D-97BD-4956-A1B2-236DDB748909}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{08717A4D-97BD-4956-A1B2-236DDB748909}.Release|Any CPU.Build.0 = Release|Any CPU
 		{203A4369-1F89-4A18-B3CC-23FB689314F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{203A4369-1F89-4A18-B3CC-23FB689314F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{203A4369-1F89-4A18-B3CC-23FB689314F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{203A4369-1F89-4A18-B3CC-23FB689314F6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{185C5782-3230-4A40-A463-E2FA58E4F54D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{185C5782-3230-4A40-A463-E2FA58E4F54D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{185C5782-3230-4A40-A463-E2FA58E4F54D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{185C5782-3230-4A40-A463-E2FA58E4F54D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6CB9E486-0454-4AAD-9A5C-15BD35C35400}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6CB9E486-0454-4AAD-9A5C-15BD35C35400}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6CB9E486-0454-4AAD-9A5C-15BD35C35400}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6CB9E486-0454-4AAD-9A5C-15BD35C35400}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
