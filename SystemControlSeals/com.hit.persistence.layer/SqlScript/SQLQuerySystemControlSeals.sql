@@ -3651,7 +3651,6 @@ UPDATE [dbo].[SealsReturnLineDetails]
 	  	 
 END
 
---*/
 
 -- =============================================
 -- Create basic stored procedure template
@@ -3760,22 +3759,387 @@ IF EXISTS (
   SELECT * 
     FROM INFORMATION_SCHEMA.ROUTINES 
    WHERE SPECIFIC_SCHEMA = N'dbo'
-     AND SPECIFIC_NAME = N'udfSealsReturnLineDetails_Delete' 
+     AND SPECIFIC_NAME = N'udfSealsState_Delete' 
 )
-   DROP PROCEDURE dbo.udfSealsReturnLineDetails_Delete
+   DROP PROCEDURE dbo.udfSealsState_Delete
 
 GO
 
-CREATE PROCEDURE dbo.udfSealsReturnLineDetails_Delete
-       @IdSealsReturnLineDetails int
+CREATE PROCEDURE dbo.udfSealsState_Delete
+       @IdSealsState int
+	  ,@HostName varchar(200)
+AS
+BEGIN
+
+UPDATE [dbo].[SealsState]
+   SET 
+       [IdStateRow] = 2
+      ,[HostName] = @HostName
+ WHERE [IdSealsState] = @IdSealsState
+	  	 
+END
+
+-- =============================================
+-- Create basic stored procedure template
+-- =============================================
+
+-- Drop stored procedure if it already exists
+IF EXISTS (
+  SELECT * 
+    FROM INFORMATION_SCHEMA.ROUTINES 
+   WHERE SPECIFIC_SCHEMA = N'dbo'
+     AND SPECIFIC_NAME = N'udfSealsType_Select' 
+)
+   DROP PROCEDURE dbo.udfSealsType_Select
+GO
+
+CREATE PROCEDURE dbo.udfSealsType_Select
+	@IdSealsType int
+AS
+BEGIN
+
+SELECT [IdSealsType]
+      ,[Descripcion]
+      ,[IdStateRow]
+      ,[FechaCreacion]
+      ,[HostName]
+  FROM [dbo].[SealsType]
+ 	WHERE ([IdSealsType] = @IdSealsType OR 0=@IdSealsType) AND [IdStateRow] = 1
+
+END
+
+EXEC dbo.udfSealsType_Select @IdSealsType = 0
+
+
+-- =============================================
+-- Create basic stored procedure template
+-- =============================================
+
+-- Drop stored procedure if it already exists
+IF EXISTS (
+  SELECT * 
+    FROM INFORMATION_SCHEMA.ROUTINES 
+   WHERE SPECIFIC_SCHEMA = N'dbo'
+     AND SPECIFIC_NAME = N'udfSealsType_Insert' 
+)
+   DROP PROCEDURE dbo.udfSealsType_Insert
+GO
+
+CREATE PROCEDURE dbo.udfSealsType_Insert
+	       @Descripcion varchar(500)
+          ,@IdStateRow int
+          ,@HostName varchar(200)
+AS
+BEGIN
+
+INSERT INTO [dbo].[SealsType]
+           ([Descripcion]
+           ,[IdStateRow]
+           ,[FechaCreacion]
+           ,[HostName])
+     VALUES
+           (@Descripcion
+           ,@IdStateRow
+		   ,GETDATE()
+           ,@HostName)
+
+END
+
+
+-- =============================================
+-- Create basic stored procedure template
+-- =============================================
+
+-- Drop stored procedure if it already exists
+IF EXISTS (
+  SELECT * 
+    FROM INFORMATION_SCHEMA.ROUTINES 
+   WHERE SPECIFIC_SCHEMA = N'dbo'
+     AND SPECIFIC_NAME = N'udfSealsType_Update' 
+)
+   DROP PROCEDURE dbo.udfSealsType_Update
+GO
+
+CREATE PROCEDURE dbo.udfSealsType_Update
+       @IdSealsType int
+	  ,@Descripcion varchar(500)
+      ,@IdStateRow int
       ,@HostName varchar(200)
 AS
 BEGIN
 
-UPDATE [dbo].[SealsReturnLineDetails]
+UPDATE [dbo].[SealsType]
+   SET [Descripcion] = @Descripcion
+      ,[IdStateRow] = @IdStateRow
+      ,[HostName] = @HostName
+ WHERE [IdSealsType] = @IdSealsType
+	  	 
+END
+
+
+-- =============================================
+-- Create basic stored procedure template
+-- =============================================
+
+-- Drop stored procedure if it already exists
+IF EXISTS (
+  SELECT * 
+    FROM INFORMATION_SCHEMA.ROUTINES 
+   WHERE SPECIFIC_SCHEMA = N'dbo'
+     AND SPECIFIC_NAME = N'udfSealsType_Delete' 
+)
+   DROP PROCEDURE dbo.udfSealsType_Delete
+
+GO
+
+
+CREATE PROCEDURE dbo.udfSealsType_Delete
+       @IdSealsType int
+	  ,@HostName varchar(200)
+AS
+BEGIN
+
+UPDATE [dbo].[SealsType]
    SET 
        [IdStateRow] = 2
       ,[HostName] = @HostName
- WHERE [IdSealsReturnLineDetails] = @IdSealsReturnLineDetails
+ WHERE [IdSealsType] = @IdSealsType
 	  	 
 END
+
+
+
+-- =============================================
+-- Create basic stored procedure template
+-- =============================================
+
+-- Drop stored procedure if it already exists
+IF EXISTS (
+  SELECT * 
+    FROM INFORMATION_SCHEMA.ROUTINES 
+   WHERE SPECIFIC_SCHEMA = N'dbo'
+     AND SPECIFIC_NAME = N'udfStateRow_Select' 
+)
+   DROP PROCEDURE dbo.udfStateRow_Select
+GO
+
+CREATE PROCEDURE dbo.udfStateRow_Select
+	@IdStateRow int
+AS
+BEGIN
+
+SELECT [IdStateRow]
+      ,[Descripcion]
+      ,[FechaCreacion]
+      ,[HostName]
+  FROM [dbo].[StateRow]
+ 	WHERE ([IdStateRow] = @IdStateRow OR 0=@IdStateRow)
+
+END
+
+EXEC dbo.udfStateRow_Select @IdStateRow = 0
+
+
+-- =============================================
+-- Create basic stored procedure template
+-- =============================================
+
+-- Drop stored procedure if it already exists
+IF EXISTS (
+  SELECT * 
+    FROM INFORMATION_SCHEMA.ROUTINES 
+   WHERE SPECIFIC_SCHEMA = N'dbo'
+     AND SPECIFIC_NAME = N'udfStateRow_Insert' 
+)
+   DROP PROCEDURE dbo.udfStateRow_Insert
+GO
+
+CREATE PROCEDURE dbo.udfStateRow_Insert
+	       @Descripcion varchar(500)
+          ,@HostName varchar(200)
+AS
+BEGIN
+
+INSERT INTO [dbo].[StateRow]
+           ([Descripcion]
+           ,[FechaCreacion]
+           ,[HostName])
+     VALUES
+           (@Descripcion
+           ,GETDATE()
+           ,@HostName)
+
+END
+
+
+-- =============================================
+-- Create basic stored procedure template
+-- =============================================
+
+-- Drop stored procedure if it already exists
+IF EXISTS (
+  SELECT * 
+    FROM INFORMATION_SCHEMA.ROUTINES 
+   WHERE SPECIFIC_SCHEMA = N'dbo'
+     AND SPECIFIC_NAME = N'udfStateRow_Update' 
+)
+   DROP PROCEDURE dbo.udfStateRow_Update
+GO
+
+CREATE PROCEDURE dbo.udfStateRow_Update
+       @IdStateRow int
+	  ,@Descripcion varchar(500)
+      ,@HostName varchar(200)
+AS
+BEGIN
+
+UPDATE [dbo].[StateRow]
+   SET [Descripcion] = @Descripcion
+      ,[HostName] = @HostName
+ WHERE [IdStateRow] =@IdStateRow
+	  	 
+END
+
+
+-- =============================================
+-- Create basic stored procedure template
+-- =============================================
+
+-- Drop stored procedure if it already exists
+IF EXISTS (
+  SELECT * 
+    FROM INFORMATION_SCHEMA.ROUTINES 
+   WHERE SPECIFIC_SCHEMA = N'dbo'
+     AND SPECIFIC_NAME = N'udfVesselVisits_Select' 
+)
+   DROP PROCEDURE dbo.udfVesselVisits_Select
+GO
+
+CREATE PROCEDURE dbo.udfVesselVisits_Select
+	@IdVesselVisits int
+AS
+BEGIN
+
+SELECT [IdVesselVisits]
+      ,[Visits]
+      ,[Voyage]
+      ,[VesselName]
+      ,[IdStateRow]
+      ,[FechaCreacion]
+      ,[HostName]
+  FROM [dbo].[VesselVisits]
+ 	WHERE ([IdVesselVisits] = @IdVesselVisits OR 0=@IdVesselVisits) AND [IdStateRow] = 1
+
+END
+
+EXEC dbo.udfVesselVisits_Select @IdVesselVisits = 0
+
+
+-- =============================================
+-- Create basic stored procedure template
+-- =============================================
+
+-- Drop stored procedure if it already exists
+IF EXISTS (
+  SELECT * 
+    FROM INFORMATION_SCHEMA.ROUTINES 
+   WHERE SPECIFIC_SCHEMA = N'dbo'
+     AND SPECIFIC_NAME = N'udfVesselVisits_Insert' 
+)
+   DROP PROCEDURE dbo.udfVesselVisits_Insert
+GO
+
+CREATE PROCEDURE dbo.udfVesselVisits_Insert
+	      @Visits varchar(100)
+         ,@Voyage varchar(100)
+         ,@VesselName varchar(500)
+         ,@IdStateRow int
+         ,@HostName varchar(200)
+AS
+BEGIN
+
+INSERT INTO [dbo].[VesselVisits]
+           ([Visits]
+           ,[Voyage]
+           ,[VesselName]
+           ,[IdStateRow]
+           ,[FechaCreacion]
+           ,[HostName])
+     VALUES
+           (@Visits
+           ,@Voyage
+           ,@VesselName
+           ,@IdStateRow
+		   ,GETDATE()
+           ,@HostName)
+		   
+END
+
+
+-- =============================================
+-- Create basic stored procedure template
+-- =============================================
+
+-- Drop stored procedure if it already exists
+IF EXISTS (
+  SELECT * 
+    FROM INFORMATION_SCHEMA.ROUTINES 
+   WHERE SPECIFIC_SCHEMA = N'dbo'
+     AND SPECIFIC_NAME = N'udfUser_Update' 
+)
+   DROP PROCEDURE dbo.udfUser_Update
+GO
+
+CREATE PROCEDURE dbo.udfUser_Update
+       @IdVesselVisits int
+	  ,@Visits varchar(100)
+      ,@Voyage varchar(100)
+      ,@VesselName varchar(500)
+      ,@IdStateRow int
+      ,@HostName varchar(200)
+AS
+BEGIN
+
+UPDATE [dbo].[VesselVisits]
+   SET [Visits] = @Visits
+      ,[Voyage] = @Voyage
+      ,[VesselName] = @VesselName
+      ,[IdStateRow] = @IdStateRow
+      ,[HostName] = @HostName
+ WHERE [IdVesselVisits] = @IdVesselVisits
+
+	  	 
+END
+
+
+-- =============================================
+-- Create basic stored procedure template
+-- =============================================
+
+-- Drop stored procedure if it already exists
+IF EXISTS (
+  SELECT * 
+    FROM INFORMATION_SCHEMA.ROUTINES 
+   WHERE SPECIFIC_SCHEMA = N'dbo'
+     AND SPECIFIC_NAME = N'udfVesselVisits_Delete' 
+)
+   DROP PROCEDURE dbo.udfVesselVisits_Delete
+
+GO
+
+
+CREATE PROCEDURE dbo.udfVesselVisits_Delete
+       @IdVesselVisits int
+	  ,@HostName varchar(200)
+AS
+BEGIN
+UPDATE [dbo].[VesselVisits]
+   SET
+       [IdStateRow] = 2
+      ,[HostName] = @HostName
+ WHERE [IdVesselVisits] = @IdVesselVisits
+
+	  
+END
+
+---*/
