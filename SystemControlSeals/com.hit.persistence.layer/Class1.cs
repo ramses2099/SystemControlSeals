@@ -1,6 +1,8 @@
 ﻿using System;
 
-namespace com.hit.persistence.layer
+
+
+namespace Com.Hit.Persistence.Layer
 {
     public class Class1
     {

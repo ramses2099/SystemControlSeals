@@ -71,3 +71,5 @@ C:\Users\jose.encarnacion\Source\Repos\SystemControlSeals\SystemControlSeals\Web
 C:\Users\jose.encarnacion\Source\Repos\SystemControlSeals\SystemControlSeals\WebApiSystemControlSeals\obj\Debug\WebApiSystemControlSeals.csprojResolveAssemblyReference.cache
 C:\Users\jose.encarnacion\Source\Repos\SystemControlSeals\SystemControlSeals\WebApiSystemControlSeals\obj\Debug\WebApiSystemControlSeals.dll
 C:\Users\jose.encarnacion\Source\Repos\SystemControlSeals\SystemControlSeals\WebApiSystemControlSeals\obj\Debug\WebApiSystemControlSeals.pdb
+C:\Users\jose.encarnacion\Source\Repos\SystemControlSeals\SystemControlSeals\WebApiSystemControlSeals\bin\System.Data.Common.dll
+C:\Users\jose.encarnacion\Source\Repos\SystemControlSeals\SystemControlSeals\WebApiSystemControlSeals\bin\System.Data.SqlClient.dll
