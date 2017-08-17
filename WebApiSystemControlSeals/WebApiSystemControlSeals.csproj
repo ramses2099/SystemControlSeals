@@ -235,6 +235,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -317,6 +318,20 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Com.Hit.Layer.Business\Com.Hit.Layer.Business.csproj">
+      <Project>{f2161bf9-50c0-48fc-90a3-952b299d7d34}</Project>
+      <Name>Com.Hit.Layer.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Com.Hit.Layer.Helper\Com.Hit.Layer.Helper.csproj">
+      <Project>{bb7f5206-5f58-4b0d-bc3a-0def473bad67}</Project>
+      <Name>Com.Hit.Layer.Helper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Com.Hit.Layer.Model\Com.Hit.Layer.Model.csproj">
+      <Project>{c0c9e1f2-b1e1-4333-a09f-942fc60d8db1}</Project>
+      <Name>Com.Hit.Layer.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

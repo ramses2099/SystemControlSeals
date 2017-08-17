@@ -53,6 +53,7 @@
     <Compile Include="SealsGiveHitDetails.cs" />
     <Compile Include="SealsGiveLine.cs" />
     <Compile Include="SealsGiveLineDetails.cs" />
+    <Compile Include="SealsLog.cs" />
     <Compile Include="SealsProcess.cs" />
     <Compile Include="SealsReturnHit.cs" />
     <Compile Include="SealsReturnHitDetails.cs" />
