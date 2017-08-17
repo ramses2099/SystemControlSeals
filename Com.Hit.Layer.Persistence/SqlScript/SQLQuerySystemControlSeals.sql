@@ -4142,4 +4142,127 @@ UPDATE [dbo].[VesselVisits]
 	  
 END
 
+-- =============================================
+-- Create basic stored procedure template
+-- =============================================
+
+-- Drop stored procedure if it already exists
+IF EXISTS (
+  SELECT * 
+    FROM INFORMATION_SCHEMA.ROUTINES 
+   WHERE SPECIFIC_SCHEMA = N'dbo'
+     AND SPECIFIC_NAME = N'udfLogin_User' 
+)
+   DROP PROCEDURE dbo.udfLogin_User
+GO
+
+CREATE PROCEDURE dbo.udfLogin_User
+	     @Usuario varchar(200),
+		 @Pwd varchar(200)
+AS
+BEGIN
+
+
+	SELECT [IdUser]
+		  ,[Usuario]
+		  ,[Pwd]
+		  ,[Nombres]
+		  ,[Apellidos]
+		  ,[Email]
+		  ,[IdRol]
+		  ,[IdStateRow]
+		  ,[FechaCreacion]
+		  ,[HostName]
+	  FROM [dbo].[User]
+	  WHERE ([Usuario] =@Usuario
+		  AND [Pwd] = @Pwd) 
+
+		   
+END
+
+
+IF OBJECT_ID('[dbo].[SealsLog]', 'U') IS NOT NULL
+  DROP TABLE [dbo].[SealsLog]
+GO
+
+CREATE TABLE [dbo].[SealsLog]
+(
+	IdSealsLog int not null identity(1,1), 
+	ClassName varchar(800) null, 	
+	MethodName varchar(800) null, 	
+	MessageError varchar(800) null, 	
+	StackTrace varchar(800) null, 	
+	TargetSite varchar(800) null, 	
+	IdUser int null,	
+	IdStateRow int not null,	
+	FechaCreacion datetime,
+	HostName varchar(200), 
+    CONSTRAINT PK_IdSealsLog_SealsLog PRIMARY KEY (IdSealsLog)
+)
+
+
+
+
+
+SELECT * FROM [dbo].[SealsLog]
+
+
+
+-- =============================================
+-- Create basic stored procedure template
+-- =============================================
+
+-- Drop stored procedure if it already exists
+IF EXISTS (
+  SELECT * 
+    FROM INFORMATION_SCHEMA.ROUTINES 
+   WHERE SPECIFIC_SCHEMA = N'dbo'
+     AND SPECIFIC_NAME = N'udfSealsLog_Insert' 
+)
+   DROP PROCEDURE dbo.udfSealsLog_Insert
+GO
+
+CREATE PROCEDURE dbo.udfSealsLog_Insert
+	     @ClassName varchar(800)
+        ,@MethodName varchar(800)
+        ,@MessageError varchar(800)
+        ,@StackTrace varchar(800)
+        ,@TargetSite varchar(800)
+        ,@IdUser int
+        ,@IdStateRow int
+        ,@HostName varchar(200)
+AS
+BEGIN
+
+INSERT INTO [dbo].[SealsLog]
+           ([ClassName]
+           ,[MethodName]
+           ,[MessageError]
+           ,[StackTrace]
+           ,[TargetSite]
+           ,[IdUser]
+           ,[IdStateRow]
+           ,[FechaCreacion]
+           ,[HostName])
+     VALUES
+           (@ClassName
+           ,@MethodName
+           ,@MessageError
+           ,@StackTrace
+           ,@TargetSite
+           ,@IdUser
+           ,@IdStateRow
+           ,GETDATE()
+           ,@HostName)
+		   
+END
+
+exec dbo.udfLogin_User
+	     @Usuario='jose.encarnacion',
+		 @Pwd='abcd.1234';
+
 ---*/
+
+exec dbo.udfLogin_User
+	     @Usuario='jose.encarnacion',
+		 @Pwd='abcd.1234';
