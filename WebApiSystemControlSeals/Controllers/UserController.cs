@@ -18,8 +18,18 @@ namespace WebApiSystemControlSeals.Controllers
 
             User user = BlUserService.LoginUser(Usuario, Pwd);
 
+            if (user == null)
+            {
+               
+                user = new User() { IdUser = -1 };
+                
+            }
+            
             return Ok(user);
         }
-        
+        //
+
+
+
     }
 }

@@ -3,3 +3,12 @@ c:\users\jose.encarnacion\documents\visual studio 2015\Projects\SystemControlSea
 c:\users\jose.encarnacion\documents\visual studio 2015\Projects\SystemControlSeals\Com.Hit.Layer.Business\obj\Debug\Com.Hit.Layer.Business.csprojResolveAssemblyReference.cache
 c:\users\jose.encarnacion\documents\visual studio 2015\Projects\SystemControlSeals\Com.Hit.Layer.Business\obj\Debug\Com.Hit.Layer.Business.dll
 c:\users\jose.encarnacion\documents\visual studio 2015\Projects\SystemControlSeals\Com.Hit.Layer.Business\obj\Debug\Com.Hit.Layer.Business.pdb
+C:\Users\jose.encarnacion\Source\Repos\SystemControlSeals\Com.Hit.Layer.Business\obj\Debug\Com.Hit.Layer.Business.csprojResolveAssemblyReference.cache
+C:\Users\jose.encarnacion\Source\Repos\SystemControlSeals\Com.Hit.Layer.Business\obj\Debug\Com.Hit.Layer.Business.dll
+C:\Users\jose.encarnacion\Source\Repos\SystemControlSeals\Com.Hit.Layer.Business\obj\Debug\Com.Hit.Layer.Business.pdb
+C:\Users\jose.encarnacion\Source\Repos\SystemControlSeals\Com.Hit.Layer.Business\bin\Debug\Com.Hit.Layer.Business.dll
+C:\Users\jose.encarnacion\Source\Repos\SystemControlSeals\Com.Hit.Layer.Business\bin\Debug\Com.Hit.Layer.Business.pdb
+C:\Users\jose.encarnacion\Source\Repos\SystemControlSeals\Com.Hit.Layer.Business\bin\Debug\Com.Hit.Layer.Model.dll
+C:\Users\jose.encarnacion\Source\Repos\SystemControlSeals\Com.Hit.Layer.Business\bin\Debug\Com.Hit.Layer.Persistence.dll
+C:\Users\jose.encarnacion\Source\Repos\SystemControlSeals\Com.Hit.Layer.Business\bin\Debug\Com.Hit.Layer.Model.pdb
+C:\Users\jose.encarnacion\Source\Repos\SystemControlSeals\Com.Hit.Layer.Business\bin\Debug\Com.Hit.Layer.Persistence.pdb

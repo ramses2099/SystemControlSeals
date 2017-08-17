@@ -33,7 +33,7 @@ namespace Com.Hit.Layer.Business
                     user.IdRol = Convert.ToInt32(data.ElementAt(6));
                     user.IdStateRow = Convert.ToInt32(data.ElementAt(7));
                     user.FechaCreacion = Convert.ToDateTime(data.ElementAt(8));
-                    user.HostName = data.ElementAt(9));
+                    user.HostName = data.ElementAt(9);
 
                 }
 
