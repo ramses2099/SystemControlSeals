@@ -4261,8 +4261,140 @@ exec dbo.udfLogin_User
 	     @Usuario='jose.encarnacion',
 		 @Pwd='abcd.1234';
 
+IF OBJECT_ID('[dbo].[Login]', 'U') IS NOT NULL
+  DROP TABLE [dbo].[Login]
+GO
+
+CREATE TABLE [dbo].[Login]
+(
+	IdLogin int not null identity(1,1), 
+	IdUser int not null,
+	FechaLogin datetime null,
+	FechaEndLogin datetime null,
+	IdStateRow int not null,
+	FechaCreacion datetime,
+	HostName varchar(200), 
+    CONSTRAINT PK_IdLogin_Login PRIMARY KEY (IdLogin)
+)
+GO
+
+
+
+IF OBJECT_ID('[dbo].[Token]', 'U') IS NOT NULL
+  DROP TABLE [dbo].[Token]
+GO
+
+CREATE TABLE [dbo].[Token]
+(
+	IdToken int not null identity(1,1), 
+	IdUser int not null,
+	KeyPass varchar(200) not null,
+	CreateDate datetime null,
+	ModifyDate datetime null,
+	IdStateRow int not null,
+	FechaCreacion datetime,
+	HostName varchar(200), 
+    CONSTRAINT PK_IdToken_Token PRIMARY KEY (IdToken)
+)
+GO
+
+
+-- =============================================
+-- Create basic stored procedure template
+-- =============================================
+
+-- Drop stored procedure if it already exists
+IF EXISTS (
+  SELECT * 
+    FROM INFORMATION_SCHEMA.ROUTINES 
+   WHERE SPECIFIC_SCHEMA = N'dbo'
+     AND SPECIFIC_NAME = N'udfToken_Insert' 
+)
+   DROP PROCEDURE dbo.udfToken_Insert
+GO
+
+CREATE PROCEDURE dbo.udfToken_Insert
+	        @IdUser int
+           ,@CreateDate datetime
+           ,@ModifyDate datetime
+           ,@IdStateRow int
+           ,@HostName varchar(200)
+AS
+BEGIN
+
+
+-- Creating a local variable with DECLARE/SET syntax.  
+DECLARE @myid uniqueidentifier  
+SET @myid = NEWID()  
+
+INSERT INTO [dbo].[Token]
+           ([IdUser]
+           ,[KeyPass]
+           ,[CreateDate]
+           ,[ModifyDate]
+           ,[IdStateRow]
+           ,[FechaCreacion]
+           ,[HostName])
+     VALUES
+           (@IdUser
+           ,CONVERT(varchar(255), @myid)
+           ,@CreateDate
+           ,@ModifyDate
+           ,@IdStateRow
+           ,GETDATE()
+           ,@HostName)
+		   
+END
+
+GO
+
+-- =============================================
+-- Create basic stored procedure template
+-- =============================================
+
+-- Drop stored procedure if it already exists
+IF EXISTS (
+  SELECT * 
+    FROM INFORMATION_SCHEMA.ROUTINES 
+   WHERE SPECIFIC_SCHEMA = N'dbo'
+     AND SPECIFIC_NAME = N'udfToken_Select' 
+)
+   DROP PROCEDURE dbo.udfToken_Select
+GO
+
+CREATE PROCEDURE dbo.udfToken_Select
+	   @KeyPass varchar(200)          
+AS
+BEGIN
+
+
+SELECT [IdToken]
+      ,[IdUser]
+      ,[KeyPass]
+      ,[CreateDate]
+      ,[ModifyDate]
+      ,[IdStateRow]
+      ,[FechaCreacion]
+      ,[HostName]
+  FROM [dbo].[Token] WHERE [KeyPass] =@KeyPass 
+  AND [IdStateRow] = 1;
+  
+		   
+END
+
+
 ---*/
 
 exec dbo.udfLogin_User
 	     @Usuario='jose.encarnacion',
 		 @Pwd='abcd.1234';
+
+
+--select * from [dbo].[Login];
+
+
+
+
+
+
+

@@ -45,6 +45,7 @@
     <Compile Include="BoxState.cs" />
     <Compile Include="Employee.cs" />
     <Compile Include="LineOperators.cs" />
+    <Compile Include="Login.cs" />
     <Compile Include="Persmission.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rol.cs" />
@@ -62,6 +63,7 @@
     <Compile Include="SealsState.cs" />
     <Compile Include="SealsType.cs" />
     <Compile Include="StateRow.cs" />
+    <Compile Include="Token.cs" />
     <Compile Include="User.cs" />
     <Compile Include="VesselVisits.cs" />
   </ItemGroup>
